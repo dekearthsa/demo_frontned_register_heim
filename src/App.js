@@ -1,22 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import {Routes, Route} from 'react-router-dom';
+import PageRegister from './view/PageRegister.js';
+
+
+// const haddleRegister = async () => {
+//     const status = await axios.post("http://localhost:9292/api/line/regsiter");
+// }
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Routes>
+          <Route path="/reigster/:userid" element={< PageRegister/>}></Route>
+        </Routes>
       </header>
     </div>
   );
