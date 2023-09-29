@@ -20,8 +20,8 @@ const PageRegister = () => {
             getMilisec: ms
         }
         const status = await axios.post("https://demo-service-line-bot-reply-heim-zt27agut7a-as.a.run.app/api/line/register",payload);
-        if(status.true){
-            alert(status.desc)
+        if(status.data.isSave){
+            alert(status.data.desc)
         }else{
             alert("Can't save please try agian.")
         }
