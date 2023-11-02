@@ -7,7 +7,13 @@ const PageRegister = () => {
     const {userid} = useParams();
 
     const [selectPlant, setSelectPlant] = useState("Rangsit");
-    const [userId, setUserId] = useState(userid)
+    const [userId, setUserId] = useState(userid);
+    const [isFristName, setIsFristName] = useState("");
+    const [isLastName, setIsLastName] = useState("");
+    const [isEmail, setIsEmail] = useState("");
+    const [isPhone, setIsPhone] = useState("");
+    const [isMainUserID, setIsMainUserID] = useState("");
+    const [isProduct, setIsProduct] = useState("");
 
 
     const haddleRegister = async () => {
@@ -15,9 +21,15 @@ const PageRegister = () => {
         const date = new Date();
         const ms = date.getTime();
         const payload = {
-            plantName: selectPlant,
+            email: isEmail,
+            fristName: isFristName,
+            lastName: isLastName,
+            tel: isPhone,
+            userID: isMainUserID,
+            getMilisec: ms,
+            product: isProduct,
             lineUserId: userId,
-            getMilisec: ms
+            plantName: selectPlant,
         }
         const status = await axios.post("https://demo-service-line-bot-reply-heim-zt27agut7a-as.a.run.app/api/line/register",payload);
         if(status.data.isSave){
@@ -50,8 +62,51 @@ const PageRegister = () => {
                             <option value="Rangsit">Rangsit</option>
                             <option value="Bangsue">Bangsue</option>
                         </select>
-    
                         {/* <input className="container-input-plant" /> */}
+                    </div>
+                    <div className="c-f-name">
+                        <label>First name</label>
+                        <input 
+                            onChange={(evt) => {setIsFristName(evt.target.value)}}
+                            value={isFristName}
+                        />
+                    </div>
+                    <div className="c-f-name">
+                        <label>Last name</label>
+                        <input
+                            onChange={(evt) => {setIsLastName(evt.target.value)}}
+                            value={isLastName}
+                        />
+                    </div>
+                    <div className="c-f-name">
+                        <label>Email</label>
+                        <input
+                            onChange={(evt) => {setIsEmail(evt.target.value)}}
+                            value={isEmail}
+                        />
+                    </div>
+                    <div className="c-f-name">
+                        <label>Phone</label>
+                        <input
+                            onChange={(evt) => {setIsPhone(evt.target.value)}}
+                            value={isPhone}
+                        />
+                    </div>
+                    <div className="c-f-name">
+                        <label>UserID</label>
+                        <input
+                            onChange={(evt) => {setIsMainUserID(evt.target.value)}}
+                            value={isMainUserID}
+                        />
+                    </div>
+                    <div className="c-f-name">
+                        <label>Product</label>
+                        <select onChange={(evt) => {setIsProduct(evt.target.value)}}
+                        value={isProduct}  >
+                            <option value="air_factory">Air factroy</option>
+                            <option value="solar_roof">Solar roof</option>
+                            <option value="air_factory_solar_roof">Air fac & Solar</option>
+                        </select>
                     </div>
                     <div className="container-btn-reg">
                         <button className="btn-reg" onClick={haddleRegister}>

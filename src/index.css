@@ -12,6 +12,12 @@ code {
     monospace;
 }
 
+.c-f-name{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 40px;
+}
+
 
 .container-id{
   display: grid;
@@ -24,10 +30,10 @@ code {
   grid-template-columns: 1fr 1fr;
 }
 
-label{
+/* label{
   display: flex;
   justify-content: start;
-}
+} */
 
 .container-input-id{
   min-width: 90px;
