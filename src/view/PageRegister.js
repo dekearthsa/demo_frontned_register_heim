@@ -18,6 +18,17 @@ const PageRegister = () => {
 
     const haddleRegister = async () => {
         // console.log(selectPlant,userId)
+        let setProduct = [];
+
+        if(isProduct === "air_factory"){
+            setProduct.push("air_factory")
+        }else if(isProduct === "solar_roof"){
+            setProduct.push("solar_roof")
+        }else if(isProduct === "air_factory_solar_roof"){
+            setProduct.push("air_factory")
+            setProduct.push( "solar_roof")
+        }
+
         const date = new Date();
         const ms = date.getTime();
         const payload = {
@@ -27,11 +38,11 @@ const PageRegister = () => {
             tel: isPhone,
             userID: isMainUserID,
             getMilisec: ms,
-            product: isProduct,
+            product: setProduct,
             lineUserId: userId,
             plantName: selectPlant,
         }
-        const status = await axios.post("https://demo-service-line-bot-reply-heim-zt27agut7a-as.a.run.app/api/line/register",payload);
+        const status = await axios.post("https://backend-smartfm-line-zt27agut7a-as.a.run.app/api/register",payload);
         if(status.data.isSave){
             alert(status.data.desc)
         }else{

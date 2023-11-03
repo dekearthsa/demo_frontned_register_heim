@@ -19,6 +19,17 @@ code {
 }
 
 
+.c-title{
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+.c-textarea{
+  width: 300px;
+  height: 70vh;
+  margin-bottom: 30px;
+  border-radius: 10px;
+}
+
 .container-id{
   display: grid;
   grid-template-columns: 1fr 1fr;
