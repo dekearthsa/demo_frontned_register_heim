@@ -31,6 +31,7 @@ const PageReportSolar = () => {
                 <div className="c-detail">
                     <textarea className="c-textarea"
                         onChange={(evt) => {setIsReport(evt.target.value)}}
+                        value={isReport}
                     >
 
                     </textarea>
